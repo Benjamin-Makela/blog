@@ -2,9 +2,17 @@
 <html>
     <head>
         <title>Benny's Blog</title>
+        <link rel="icon" type="image/x-icon" href="/media/favicon.ico">
 
         <meta name="author" content="Benjamin Makela">
         <meta name="description" content="Benjamin Makela's Blog">
         <meta name="keywords" content="BennyBanana, Benjamin Makela, Blog">
+
+        <script src="thestuff.js"></script>
     </head>
+    <body onload="init()">
+        <p>Welcome to my blog</p>
+        <textarea id="postField" rows="4" cols="50" placeholder="type something" style="resize: none;"></textarea>
+        <button id="post">post</button>
+    </body>
 </html>
