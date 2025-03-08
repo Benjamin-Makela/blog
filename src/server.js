@@ -1,10 +1,15 @@
-const http = require('http');
+const http = require("http");
+const port = 80;
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello, World!\n');
+const server = http.createServer(function(req, res) {
+    res.write("hello node");
+    res.end();
 });
 
-server.listen(80, "0.0.0.0", () => {
-    console.log('Server listening on port 80');
+server.listen(port, function(error) {
+    if (error) {
+        console.log("somethin wenmt wrong", error);
+    } else {
+        console.log("listening on port" + port);
+    }
 });
