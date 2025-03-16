@@ -6,7 +6,7 @@ const server = http.createServer(function(req, res) {
     res.end();
 });
 
-server.listen(port, function(error) {
+server.listen(port, "0.0.0.0", function(error) {
     if (error) {
         console.log("somethin wenmt wrong", error);
     } else {
