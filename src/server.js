@@ -12,14 +12,6 @@ const server = http.createServer(function (req, res) {
                 res.end(data);
             }
         });
-    } else if (req.url === "/media/favicon.ico") {
-        const filePath = path.join(__dirname, "/media/favicon.ico");
-        fs.readFile(filePath, (err, data) => {
-            if (!err) {
-                res.writeHead(200, { 'Content-Type': 'image/x-icon' });
-                res.end(data);
-            }
-        });
     } else {
         const filePath = path.join(__dirname, req.url);
         fs.readFile(filePath, (err, data) => {
@@ -27,7 +19,11 @@ const server = http.createServer(function (req, res) {
                 res.writeHead(404, { "Content-Type": "text/html" });
                 res.end("<h1>This file does not exist idiot. Nice try buddy.</h1>");
             } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
+                if (/\.html$/.test(filePath)) {
+                    res.writeHead(200, { 'Content-Type': 'text/html' });
+                } else if (/\.js$/.test(filePath)) {
+                    res.writeHead(200, { 'Content-Type': 'text/javascript' });
+                }
                 res.end(data);
             }
         });
