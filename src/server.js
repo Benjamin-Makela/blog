@@ -7,10 +7,7 @@ const server = http.createServer(function (req, res) {
     if (req.url === "/") {
         const filePath = path.join(__dirname, 'benny.html');
         fs.readFile(filePath, (err, data) => {
-            if (err) {
-                res.writeHead(404, { 'Content-Type': 'text/html' });
-                res.end("<h1>404 Not Found Because That Freaking File Does Not Exist Yo</h1>");
-            } else {
+            if (!err) {
                 res.writeHead(200, { 'Content-Type': 'text/html' });
                 res.end(data);
             }
@@ -24,8 +21,16 @@ const server = http.createServer(function (req, res) {
             }
         });
     } else {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end("Not Found Because That Does Not Exist Yo");
+        const filePath = path.join(__dirname, req.url);
+        fs.readFile(filePath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { "Content-Type": "text/html" });
+                res.end("<h1>This file does not exist idiot. Nice try buddy.</h1>");
+            } else {
+                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.end(data);
+            }
+        });
     }
 });
 
