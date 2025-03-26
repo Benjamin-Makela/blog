@@ -21,13 +21,15 @@ const server = http.createServer(function (req, res) {
                 res.writeHead(404, { "Content-Type": "text/html" });
                 res.end("<h1>This file does not exist idiot. Nice try buddy.</h1>");
             } else {
+                let ct = "";
                 if (/\.html$/.test(filePath)) {
-                    res.writeHead(200, { 'Content-Type': 'text/html' });
+                    ct += "text/html";
                 } else if (/\.js$/.test(filePath)) {
-                    res.writeHead(200, { 'Content-Type': 'text/javascript' });
+                    ct += "text/javascript";
                 } else if (/\.ico$/.test(filePath)) {
-                    res.writeHead(200, { 'Content-Type': 'image/x-icon' });
+                    ct += "image/x-icon";
                 }
+                res.writeHead(200, { "Content-Type": ct });
                 res.end(data);
             }
         });
