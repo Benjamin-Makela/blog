@@ -26,7 +26,7 @@ const server = http.createServer(function (req, res) {
                 } else if (/\.js$/.test(filePath)) {
                     res.writeHead(200, { 'Content-Type': 'text/javascript' });
                 } else if (/\.ico$/.test(filePath)) {
-                    res.writeHead(200, { 'Content-Type': 'image/ico' });
+                    res.writeHead(200, { 'Content-Type': 'image/x-icon' });
                 }
                 res.end(data);
             }
