@@ -2,7 +2,7 @@ const http = require("http");
 const port = 80;
 
 const server = http.createServer(function (req, res) {
-    const filePath = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url);
+    const filePath = path.join(__dirname, 'public', req.url === '/' ? 'benny.html' : req.url);
     fs.readFile(filePath, (err, data) => {
         if (err) {
             res.writeHead(404, { 'Content-Type': 'text/html' });
