@@ -19,14 +19,12 @@ const server = http.createServer(function (req, res) {
                 res.writeHead(404, { "Content-Type": "text/html" });
                 res.end("<h1>This file does not exist idiot. Nice try buddy.</h1>");
             } else {
+                console.log(req.url);
                 if (/\.html$/.test(filePath)) {
-                    console.log("defnitely an html yo");
                     res.writeHead(200, { 'Content-Type': 'text/html' });
                 } else if (/\.js$/.test(filePath)) {
-                    console.log("defnitely an js yo");
                     res.writeHead(200, { 'Content-Type': 'text/javascript' });
                 } else if (/\.ico$/.test(filePath)) {
-                    console.log("defnitely an ico yo");
                     res.writeHead(200, { 'Content-Type': 'image/ico' });
                 }
                 res.end(data);
