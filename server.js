@@ -13,7 +13,7 @@ const server = http.createServer(function (req, res) {
                 res.end(data);
             }
         });
-    } else if (req.method === "POST") {
+    } else if (req.method == "POST") {
         console.log("hello?");
         res.writeHead({ "Content-Type": "text/plain" });
         res.end();
