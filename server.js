@@ -25,7 +25,7 @@ const server = http.createServer(function (req, res) {
                 try {
                     const postData = JSON.parse(body);
                     try {
-                        fs.writeFileSync("file.txt", postData.letter);
+                        fs.appendFileSync("file.txt", postData.letter);
                     } catch (err) {
                         console.error('Error writing to file synchronously:', err);
                     }
