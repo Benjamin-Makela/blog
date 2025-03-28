@@ -29,7 +29,16 @@ const server = http.createServer(function (req, res) {
                             console.error('Error reading the file:', err);
                         } else {
                             const newData = data.replace("</p>", body.letter + "</p>");
-                            fs.writeFile("benny.html", newData);
+                            fs.writeFile("benny.html", newData, (err) => {
+                                if (err) {
+                                    console.error('Error writing to file:', err);
+                                    res.writeHead(500, { "Content-Type": "text/plain" });
+                                    res.end("Error writing to file");
+                                } else {
+                                    res.writeHead(200, { "Content-Type": "application/json" });
+                                    res.end(JSON.stringify({ message: "Data received and file updated successfully!" }));
+                                }
+                            });
                         }
                     });
                     res.writeHead(200, { "Content-Type": "application/json" });
