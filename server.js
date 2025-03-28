@@ -17,11 +17,12 @@ const server = http.createServer(function (req, res) {
         res.writeHead({ "Content-Type": "text/plain" });
         res.end();
     } else {
+        console.log(req);
         const filePath = path.join(__dirname, req.url);
         fs.readFile(filePath, (err, data) => {
-            console.log(req.url);
+            // console.log(req.url);
             if (err) {
-                console.log(err);
+                // console.log(err);
                 res.writeHead(404, { "Content-Type": "text/html" });
                 res.end("<h1>This file does not exist idiot. Nice try buddy.</h1>");
             } else {
