@@ -1,6 +1,5 @@
 const http = require("http");
 const fs = require('fs');
-const cheerio = require('cheerio');
 const path = require('path');
 const port = 80;
 
