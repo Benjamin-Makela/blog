@@ -8,12 +8,11 @@ function init() {
 }
 
 async function submitKey(key) {
-    const request = await fetch("http://bennybanana.live", {
+    const response = await fetch("http://bennybanana.live", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ letter: key })
     })
-    const response = fetch(request);
 }
