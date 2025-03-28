@@ -14,11 +14,10 @@ const server = http.createServer(function (req, res) {
             }
         });
     } else if (req.method === "POST") {
-        // console.log(req);
+        console.log(req);
         res.writeHead({ "Content-Type": "text/plain" });
         res.end();
     } else {
-        // console.log(req.method);
         const filePath = path.join(__dirname, req.url);
         fs.readFile(filePath, (err, data) => {
             // console.log(req.url);
