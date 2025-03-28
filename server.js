@@ -14,10 +14,15 @@ const server = http.createServer(function (req, res) {
                 res.end(data);
             }
         });
-    } else if (req.method == "POST") {
-        console.log("serving post http request");
-        res.writeHead({ "Content-Type": "text/plain" });
-        res.end();
+    } else if (req.url === "/POST") {
+        if (req.method === "POST") {
+            console.log("serving post http request");
+            res.writeHead({ "Content-Type": "text/plain" });
+            res.end();
+        } else {
+            res.writeHead({ "Content-Type": "text/plain" });
+            res.end(404, "We really don't have anything else here");
+        }
     } else {
         console.log("literally anything else");
         const filePath = path.join(__dirname, req.url);
