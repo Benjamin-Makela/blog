@@ -17,11 +17,11 @@ const server = http.createServer(function (req, res) {
     } else if (req.url === "/POST") {
         if (req.method === "POST") {
             console.log("serving post http request");
-            res.writeHead({ "Content-Type": "text/plain" });
+            res.writeHead(200, { "Content-Type": "text/plain" });
             res.end();
         } else {
-            res.writeHead({ "Content-Type": "text/plain" });
-            res.end(404, "We really don't have anything else here");
+            res.writeHead(404, { "Content-Type": "text/plain" });
+            res.end("We really don't have anything else here");
         }
     } else {
         console.log("literally anything else");
