@@ -28,7 +28,7 @@ const server = http.createServer(function (req, res) {
                         if (err) {
                             console.error('Error reading the file:', err);
                         } else {
-                            const newData = replaceAll("</p>", body.letter + "</p>");
+                            const newData = data.replace("</p>", body.letter + "</p>");
                             fs.writeFile("benny.html", newData);
                         }
                     });
