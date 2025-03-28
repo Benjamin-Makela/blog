@@ -1,5 +1,6 @@
 const http = require("http");
 const fs = require('fs');
+const cheerio = require('cheerio');
 const path = require('path');
 const port = 80;
 
@@ -28,9 +29,11 @@ const server = http.createServer(function (req, res) {
                         if (err) {
                             console.error('Error reading the file:', err);
                         } else {
-                            data.replace("</p>", data.letter + "</p>");
+                            const newData = replaceAll("</p>", body.letter + "</p>");
+                            fs.writeFile("benny.html", newData);
                         }
-                      });
+                    });
+                    fs.writeFile("benny.html",)
                     res.writeHead(200, { "Content-Type": "application/json" });
                     res.end(JSON.stringify({ message: "Data received successfully!" }));
                 } catch (error) {
