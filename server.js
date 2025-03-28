@@ -24,11 +24,13 @@ const server = http.createServer(function (req, res) {
             req.on("end", () => {
                 try {
                     const postData = JSON.parse(body);
-                    try {
-                        fs.appendFileSync("file.txt", postData.letter);
-                    } catch (err) {
-                        console.error('Error writing to file synchronously:', err);
-                    }
+                    fs.readFile('benny.html', 'utf8', (err, data) => {
+                        if (err) {
+                            console.error('Error reading the file:', err);
+                        } else {
+                            data.replace("</p>", data.letter + "</p>");
+                        }
+                      });
                     res.writeHead(200, { "Content-Type": "application/json" });
                     res.end(JSON.stringify({ message: "Data received successfully!" }));
                 } catch (error) {
