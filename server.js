@@ -4,7 +4,7 @@ const path = require('path');
 const port = 80;
 
 const server = http.createServer(function (req, res) {
-    console.log(req.method);
+    console.log(req.method + req.method);
     if (req.url === "/") {
         const filePath = path.join(__dirname, 'benny.html');
         fs.readFile(filePath, (err, data) => {
