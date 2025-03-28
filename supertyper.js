@@ -15,4 +15,5 @@ async function submitKey(key) {
         },
         body: JSON.stringify({ letter: key })
     })
+    console.log(response);
 }
