@@ -32,7 +32,6 @@ const server = http.createServer(function (req, res) {
                             fs.writeFile("benny.html", newData);
                         }
                     });
-                    fs.writeFile("benny.html",)
                     res.writeHead(200, { "Content-Type": "application/json" });
                     res.end(JSON.stringify({ message: "Data received successfully!" }));
                 } catch (error) {
