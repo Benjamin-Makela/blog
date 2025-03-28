@@ -4,11 +4,7 @@ const path = require('path');
 const port = 80;
 
 const server = http.createServer(function (req, res) {
-    if (req.method === "GET") {
-        console.log(req);
-        res.writeHead(200, { "Content-Type": "text/plain" });
-        res.end("GET request received");
-    } else if (req.url === "/") {
+    if (req.url === "/") {
         const filePath = path.join(__dirname, 'benny.html');
         fs.readFile(filePath, (err, data) => {
             if (!err) {
@@ -16,6 +12,10 @@ const server = http.createServer(function (req, res) {
                 res.end(data);
             }
         });
+    } else if (req.method === "POST") {
+        console.log(req);
+        res.writeHead({ "Content-Type": "text/plain" });
+        res.end();
     } else {
         const filePath = path.join(__dirname, req.url);
         fs.readFile(filePath, (err, data) => {
