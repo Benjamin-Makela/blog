@@ -24,6 +24,7 @@ const server = http.createServer(function (req, res) {
             req.on("end", () => {
                 try {
                     const postData = JSON.parse(body);
+                    console.log(postData);
                     res.writeHead(200, { "Content-Type": "application/json" });
                     res.end(JSON.stringify({ message: "Data received successfully!" }));
                 } catch (error) {
