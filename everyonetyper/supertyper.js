@@ -5,7 +5,6 @@ function init() {
             submitKey(ev.key);
         }
     });
-    
 }
 
 async function submitKey(key) {
